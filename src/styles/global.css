@@ -1,0 +1,80 @@
+@import '@fontsource-variable/hanken-grotesk';
+@import '@fontsource-variable/hanken-grotesk/wght-italic.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Sprat — self-hosted variable font (TTF, covers wdth 50–150 and wght 100–900) */
+@font-face {
+  font-family: 'Sprat';
+  src: url('/fonts/Sprat_Variable.ttf') format('truetype supports variations'),
+       url('/fonts/Sprat_Variable.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Italic fallback — synthetic italic from variable roman */
+@font-face {
+  font-family: 'Sprat';
+  src: url('/fonts/Sprat_Variable.ttf') format('truetype supports variations'),
+       url('/fonts/Sprat_Variable.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  --font-display: 'Sprat', serif;
+  --font-body: 'Hanken Grotesk Variable', sans-serif;
+  --color-bg: #ffffff;
+  --color-text: #0d0d0d;
+  --color-secondary: #555555;
+  --color-accent: #cc0000;
+  --color-rule: #e0e0e0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 300;
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Mermaid diagram styling */
+.mermaid svg,
+pre.mermaid svg {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--color-rule);
+  display: block;
+  margin: 2rem auto;
+}
+
+/* Pagefind UI overrides */
+:root {
+  --pagefind-ui-scale: 0.8;
+  --pagefind-ui-primary: var(--color-accent);
+  --pagefind-ui-text: var(--color-text);
+  --pagefind-ui-background: var(--color-bg);
+  --pagefind-ui-border: var(--color-rule);
+  --pagefind-ui-tag: var(--color-secondary);
+  --pagefind-ui-font: var(--font-body);
+}

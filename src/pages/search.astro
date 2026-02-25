@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Search" description="Search all articles on eiler.dk.">
+  <h1
+    class="font-display font-light text-[2.5rem] leading-[1.15] text-[#0d0d0d] mb-8"
+    style="font-variation-settings: 'wdth' 75;"
+  >
+    Search
+  </h1>
+
+  <hr class="border-t border-[#e0e0e0] mb-10" />
+
+  <div id="search" class="max-w-[680px]"></div>
+</Base>
+
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
+<script is:inline src="/pagefind/pagefind-ui.js"></script>
+<script is:inline>
+  window.addEventListener('DOMContentLoaded', () => {
+    new PagefindUI({ element: '#search', showSubResults: true });
+  });
+</script>

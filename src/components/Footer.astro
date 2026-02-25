@@ -1,0 +1,33 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="w-full border-t border-[#e0e0e0] mt-16">
+  <div class="w-full max-w-[1100px] mx-auto px-6 py-6">
+    <div class="flex items-center justify-between">
+      <span class="text-xs font-light text-[#555555]">
+        &copy; {year} Kasper Eiler
+      </span>
+      <nav class="flex items-center gap-6">
+        <a
+          href="/rss.xml"
+          class="text-xs font-normal text-[#555555] hover:text-[#cc0000] transition-colors no-underline uppercase tracking-[0.05em]"
+        >
+          RSS
+        </a>
+        <a
+          href="/sitemap-index.xml"
+          class="text-xs font-normal text-[#555555] hover:text-[#cc0000] transition-colors no-underline uppercase tracking-[0.05em]"
+        >
+          Sitemap
+        </a>
+        <a
+          href="/llm.txt"
+          class="text-xs font-normal text-[#555555] hover:text-[#cc0000] transition-colors no-underline uppercase tracking-[0.05em]"
+        >
+          llm.txt
+        </a>
+      </nav>
+    </div>
+  </div>
+</footer>

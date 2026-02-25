@@ -1,0 +1,83 @@
+---
+import { getCollection, render } from 'astro:content';
+import readingTime from 'reading-time';
+import Article from '../../layouts/Article.astro';
+import ArticleAuthor from '../../components/ArticleAuthor.astro';
+import ArticleNav from '../../components/ArticleNav.astro';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('blog', ({ data }) =>
+    import.meta.env.PROD ? !data.draft : true
+  );
+  articles.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+  return articles.map((article, index) => ({
+    params: { slug: article.slug },
+    props: {
+      article,
+      prev: articles[index + 1]
+        ? { title: articles[index + 1].data.title, slug: articles[index + 1].slug }
+        : undefined,
+      next: articles[index - 1]
+        ? { title: articles[index - 1].data.title, slug: articles[index - 1].slug }
+        : undefined,
+    },
+  }));
+}
+
+const { article, prev, next } = Astro.props;
+const { Content } = await render(article);
+
+const rt = readingTime(article.body ?? '').text;
+const canonicalURL = new URL(`/blog/${article.slug}`, Astro.site).href;
+
+const formattedDate = article.data.date.toLocaleDateString('en-GB', {
+  day: '2-digit',
+  month: 'short',
+  year: 'numeric',
+});
+---
+
+<Article
+  title={article.data.title}
+  description={article.data.description}
+  date={article.data.date}
+  url={canonicalURL}
+>
+  <!-- Back link -->
+  <a href="/" class="inline-block text-sm font-light text-[#cc0000] no-underline hover:underline mb-8">
+    ← Back
+  </a>
+
+  <!-- Meta -->
+  <div class="mb-6">
+    <p class="text-xs font-light text-[#555555] mb-2">
+      {formattedDate} · {rt}
+    </p>
+    <div class="flex flex-wrap gap-3">
+      {article.data.tags.map((tag) => (
+        <span class="text-xs font-normal uppercase tracking-[0.05em] text-[#555555]">
+          {tag}
+        </span>
+      ))}
+    </div>
+  </div>
+
+  <!-- Title -->
+  <h1
+    class="font-display font-light text-[3.5rem] leading-[1.1] text-[#0d0d0d] mb-8 max-w-[800px]"
+    style="font-variation-settings: 'wdth' 75;"
+  >
+    {article.data.title}
+  </h1>
+
+  <hr class="border-t border-[#e0e0e0] mb-10" />
+
+  <!-- Article body -->
+  <div class="prose max-w-[680px]">
+    <Content />
+  </div>
+
+  <ArticleAuthor />
+  <ArticleNav prev={prev} next={next} />
+</Article>

@@ -1,0 +1,38 @@
+---
+interface NavEntry {
+  title: string;
+  slug: string;
+}
+
+interface Props {
+  prev?: NavEntry;
+  next?: NavEntry;
+}
+
+const { prev, next } = Astro.props;
+---
+
+{(prev || next) && (
+  <nav class="border-t border-[#e0e0e0] pt-8 mt-10 flex items-start justify-between gap-8">
+    <div class="flex-1">
+      {prev && (
+        <a
+          href={`/blog/${prev.slug}`}
+          class="text-sm font-light text-[#555555] no-underline hover:text-[#cc0000] transition-colors"
+        >
+          ← {prev.title}
+        </a>
+      )}
+    </div>
+    <div class="flex-1 text-right">
+      {next && (
+        <a
+          href={`/blog/${next.slug}`}
+          class="text-sm font-light text-[#555555] no-underline hover:text-[#cc0000] transition-colors"
+        >
+          {next.title} →
+        </a>
+      )}
+    </div>
+  </nav>
+)}

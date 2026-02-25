@@ -1,0 +1,79 @@
+---
+import { getCollection } from 'astro:content';
+import readingTime from 'reading-time';
+import Base from '../layouts/Base.astro';
+import ArticleFeatured from '../components/ArticleFeatured.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+
+const articles = await getCollection('blog', ({ data }) =>
+  import.meta.env.PROD ? !data.draft : true
+);
+
+articles.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const [featured, ...rest] = articles;
+---
+
+<Base
+  title="eiler.dk"
+  description="Writing on technology, enterprise AI and the architecture of what comes next."
+>
+  <!-- Tagline -->
+  <p
+    class="font-display font-light text-[2.5rem] leading-[1.15] text-[#0d0d0d] mb-10"
+    style="font-variation-settings: 'wdth' 75;"
+  >
+    Writing on technology, enterprise AI<br />
+    and the architecture of what comes next.
+  </p>
+
+  <hr class="border-t border-[#e0e0e0] mb-0" />
+
+  <!-- Featured article -->
+  {featured && (
+    <ArticleFeatured
+      title={featured.data.title}
+      description={featured.data.description}
+      date={featured.data.date}
+      tags={featured.data.tags}
+      slug={featured.slug}
+      readingTime={readingTime(featured.body ?? '').text}
+    />
+  )}
+
+  <!-- Article grid -->
+  {rest.length > 0 && (
+    <div class="mt-0">
+      {Array.from({ length: Math.ceil(rest.length / 2) }, (_, rowIndex) => {
+        const left = rest[rowIndex * 2];
+        const right = rest[rowIndex * 2 + 1];
+        return (
+          <div class="border-b border-[#e0e0e0] grid grid-cols-1 md:grid-cols-2">
+            <div class="md:border-r border-[#e0e0e0] md:pr-8">
+              <ArticleCard
+                title={left.data.title}
+                description={left.data.description}
+                date={left.data.date}
+                tags={left.data.tags}
+                slug={left.slug}
+                readingTime={readingTime(left.body ?? '').text}
+              />
+            </div>
+            <div class="md:pl-8">
+              {right && (
+                <ArticleCard
+                  title={right.data.title}
+                  description={right.data.description}
+                  date={right.data.date}
+                  tags={right.data.tags}
+                  slug={right.slug}
+                  readingTime={readingTime(right.body ?? '').text}
+                />
+              )}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  )}
+</Base>
