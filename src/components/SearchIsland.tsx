@@ -78,7 +78,7 @@ export default function SearchIsland() {
               href="/"
               className="font-sans font-normal text-base tracking-[0.01em] text-[#0d0d0d] no-underline hover:text-[#cc0000] transition-colors leading-tight"
             >
-              Martin Eiler
+              Eiler.dk
             </a>
             <span className="font-sans font-light text-xs text-[#555555] tracking-[0.01em]">
               Technology · Enterprise AI · Platform Architecture
