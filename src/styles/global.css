@@ -58,14 +58,104 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Mermaid diagram styling */
-.mermaid svg,
-pre.mermaid svg {
-  max-width: 100%;
-  height: auto;
+/* Mermaid — Swiss style overrides */
+[id^="mermaid-"] {
+  font-family: 'Hanken Grotesk Variable', sans-serif !important;
+  font-size: 13px !important;
   border: 1px solid var(--color-rule);
   display: block;
-  margin: 2rem auto;
+  margin: 2.5rem 0;
+  max-width: 100%;
+  height: auto;
+  padding: 2rem 1.5rem;
+  box-sizing: border-box;
+}
+
+/* Node shapes — white fill, thin near-black border, no rounding */
+[id^="mermaid-"] .node rect,
+[id^="mermaid-"] .node circle,
+[id^="mermaid-"] .node ellipse,
+[id^="mermaid-"] .node polygon,
+[id^="mermaid-"] .node path {
+  fill: #ffffff !important;
+  stroke: #0d0d0d !important;
+  stroke-width: 1px !important;
+  rx: 0;
+  ry: 0;
+}
+
+/* Labels — correct font and colour */
+[id^="mermaid-"] .label,
+[id^="mermaid-"] .label text,
+[id^="mermaid-"] span,
+[id^="mermaid-"] text {
+  font-family: 'Hanken Grotesk Variable', sans-serif !important;
+  font-weight: 300 !important;
+  fill: #0d0d0d !important;
+  color: #0d0d0d !important;
+}
+
+/* Edge lines and arrowheads */
+[id^="mermaid-"] .edgePath .path,
+[id^="mermaid-"] .flowchart-link {
+  stroke: #0d0d0d !important;
+  stroke-width: 1px !important;
+}
+
+[id^="mermaid-"] .arrowheadPath,
+[id^="mermaid-"] .marker {
+  fill: #0d0d0d !important;
+  stroke: #0d0d0d !important;
+}
+
+/* Sequence diagram — notes, actors, signals */
+[id^="mermaid-"] .note rect,
+[id^="mermaid-"] .note {
+  fill: #f5f5f5 !important;
+  stroke: #0d0d0d !important;
+  stroke-width: 1px !important;
+  stroke-dasharray: 4, 3 !important;
+}
+
+[id^="mermaid-"] .noteText,
+[id^="mermaid-"] .noteText tspan {
+  fill: #0d0d0d !important;
+  color: #0d0d0d !important;
+}
+
+[id^="mermaid-"] .actor rect,
+[id^="mermaid-"] .actor {
+  fill: #ffffff !important;
+  stroke: #0d0d0d !important;
+  stroke-width: 1px !important;
+}
+
+[id^="mermaid-"] line.actor-line,
+[id^="mermaid-"] .actor-line {
+  stroke: #0d0d0d !important;
+  stroke-width: 1px !important;
+}
+
+[id^="mermaid-"] .messageLine0,
+[id^="mermaid-"] .messageLine1 {
+  stroke: #0d0d0d !important;
+  stroke-width: 1px !important;
+}
+
+[id^="mermaid-"] #arrowhead path,
+[id^="mermaid-"] defs marker path {
+  fill: #0d0d0d !important;
+  stroke: #0d0d0d !important;
+}
+
+/* Edge labels — transparent background */
+[id^="mermaid-"] .edgeLabel,
+[id^="mermaid-"] .edgeLabel p,
+[id^="mermaid-"] .edgeLabel rect,
+[id^="mermaid-"] .labelBkg {
+  background: transparent !important;
+  background-color: transparent !important;
+  fill: transparent !important;
 }
 
 /* Pagefind UI overrides */

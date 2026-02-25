@@ -48,6 +48,24 @@ The golden path is explicitly not the only way to do things. Teams with unusual 
 
 This is a fundamentally different posture from "we support whatever you need." It concentrates platform investment where it produces the most impact, reduces the cognitive overhead of decision-making for product teams, and gives the platform team something concrete to optimise for.
 
+```mermaid
+quadrantChart
+    title Platform investment vs team adoption
+    x-axis Low adoption --> High adoption
+    y-axis Low investment --> High investment
+    quadrant-1 Golden path
+    quadrant-2 Over-engineered
+    quadrant-3 Abandon
+    quadrant-4 Organic demand
+    Golden path capabilities: [0.85, 0.85]
+    CI/CD pipeline: [0.80, 0.75]
+    Observability stack: [0.70, 0.80]
+    Custom integrations: [0.25, 0.70]
+    Legacy abstractions: [0.20, 0.75]
+    Ad hoc tooling: [0.60, 0.20]
+    Team workarounds: [0.75, 0.15]
+```
+
 ## What this requires from leadership
 
 None of this works without organisational support. Platform teams cannot adopt a product discipline if their leadership measures them by the number of features shipped or the number of requests fulfilled. They cannot maintain a golden path strategy if escalations routinely override their prioritisation.

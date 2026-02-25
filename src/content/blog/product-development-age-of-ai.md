@@ -18,6 +18,25 @@ When code is not the bottleneck, decision-making becomes the bottleneck. Product
 
 The teams handling this well are front-loading the thinking. More time on problem definition, user research, and outcome specification before a line of code is written — and then moving very fast once direction is clear.
 
+```mermaid
+sequenceDiagram
+    participant PM as Product
+    participant Eng as Engineering
+    participant AI as AI Tools
+
+    note over PM,Eng: Before — engineering was the bottleneck
+    PM->>Eng: Requirements (2 weeks)
+    Eng->>PM: Questions, edge cases (1 week)
+    PM->>Eng: Refined spec (1 week)
+    Eng->>PM: Working software (3 weeks)
+
+    note over PM,Eng: After — decisions are the bottleneck
+    PM->>Eng: Requirements (2 weeks)
+    Eng->>AI: Implementation
+    AI->>Eng: Working code (2 days)
+    Eng->>PM: Done. What's next?
+```
+
 ## Quality is harder to define
 
 Traditional software quality has well-established measures. Correctness is binary: the code either does what it should or it does not. Coverage can be quantified. Performance has objective benchmarks. Defect rates are trackable.
@@ -33,6 +52,18 @@ A product is traditionally "done" when it behaves as specified. AI-native produc
 This has profound implications for how product teams think about maintenance. It is no longer sufficient to ship and move on. AI products require continuous monitoring, evaluation, and intervention — more like operating a service than shipping a product.
 
 Some teams are responding by treating their AI models as infrastructure, with a dedicated operational practice analogous to database administration. This is probably the right instinct. The model layer is increasingly where the business logic lives, and it needs to be operated with the same rigour as the rest of the stack.
+
+```mermaid
+stateDiagram-v2
+    [*] --> Build
+    Build --> Ship
+    Ship --> Monitor
+    Monitor --> Evaluate
+    Evaluate --> Build: model drifts
+    Evaluate --> Ship: acceptable
+    Monitor --> Intervene: anomaly detected
+    Intervene --> Evaluate
+```
 
 ## The people question
 

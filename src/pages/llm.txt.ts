@@ -15,7 +15,7 @@ export async function GET(context: APIContext) {
 
   const text = `# eiler.dk
 
-Personal blog by Kasper Eiler. Writing about technology,
+Personal blog by Martin Eiler. Writing about technology,
 enterprise AI, product development and platform architecture.
 
 ## Articles
@@ -24,7 +24,7 @@ ${articleLines}
 
 ## About
 
-Kasper Eiler works at the intersection of technology strategy, platform architecture,
+Martin Eiler works at the intersection of technology strategy, platform architecture,
 and enterprise AI. Based in Copenhagen. This blog covers enterprise AI adoption,
 platform and infrastructure design, and the organisational dynamics that shape how
 technology gets built and used at scale.

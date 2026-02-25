@@ -4,7 +4,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        display: ['Sprat', 'serif'],
+        // Single typeface system — hierarchy through size and weight only
+        display: ['Hanken Grotesk Variable', 'sans-serif'],
         sans: ['Hanken Grotesk Variable', 'sans-serif'],
       },
       colors: {
@@ -13,12 +14,15 @@ export default {
         'text-secondary': '#555555',
         rule: '#e0e0e0',
       },
+      letterSpacing: {
+        tighter: '-0.02em',
+      },
       typography: (theme) => ({
         DEFAULT: {
           css: {
             fontFamily: theme('fontFamily.sans').join(', '),
             fontWeight: '300',
-            color: theme('colors.text-primary', '#0d0d0d'),
+            color: '#0d0d0d',
             lineHeight: '1.6',
             maxWidth: '680px',
             '--tw-prose-body': '#0d0d0d',
@@ -32,29 +36,27 @@ export default {
             '--tw-prose-quotes': '#555555',
             '--tw-prose-quote-borders': '#e0e0e0',
             h1: {
-              fontFamily: theme('fontFamily.display').join(', '),
-              fontWeight: '300',
+              fontFamily: theme('fontFamily.sans').join(', '),
+              fontWeight: '200',
               lineHeight: '1.1',
-              fontVariationSettings: '"wdth" 75',
+              letterSpacing: '-0.02em',
             },
             h2: {
-              fontFamily: theme('fontFamily.display').join(', '),
+              fontFamily: theme('fontFamily.sans').join(', '),
               fontWeight: '300',
               fontSize: '1.75rem',
               lineHeight: '1.2',
-              fontVariationSettings: '"wdth" 75',
+              letterSpacing: '-0.01em',
             },
             h3: {
-              fontFamily: theme('fontFamily.display').join(', '),
+              fontFamily: theme('fontFamily.sans').join(', '),
               fontWeight: '300',
               fontSize: '1.25rem',
               lineHeight: '1.3',
-              fontVariationSettings: '"wdth" 75',
             },
             h4: {
-              fontFamily: theme('fontFamily.display').join(', '),
+              fontFamily: theme('fontFamily.sans').join(', '),
               fontWeight: '300',
-              fontVariationSettings: '"wdth" 75',
             },
             'h2 a, h3 a, h4 a': {
               fontWeight: '300',
