@@ -4,7 +4,7 @@ import Base from '../layouts/Base.astro';
 
 <Base
   title="About"
-  description="Martin Eiler — writing about technology, enterprise AI, product development and platform architecture."
+  description="Martin Eiler — founder and former CTO writing about technology, enterprise AI, platform architecture and the organisational dynamics that shape how technology gets built at scale."
 >
   <h1
     class="font-sans font-extralight text-[3.5rem] leading-[1.1] tracking-[-0.02em] text-[#0d0d0d] mb-8"
@@ -14,19 +14,57 @@ import Base from '../layouts/Base.astro';
 
   <hr class="border-t border-[#e0e0e0] mb-10" />
 
-  <div class="max-w-[680px] space-y-5 text-base font-light text-[#0d0d0d] leading-relaxed">
-    <p>
-      I work at the intersection of technology strategy, platform architecture, and enterprise AI.
-      For the past decade I have been helping large organisations navigate the shift from
-      traditional IT to modern platform thinking — and more recently, to AI-native ways of working.
-    </p>
-    <p>
-      This blog is where I think out loud. The writing covers enterprise AI adoption, platform
-      and infrastructure design, and the organisational dynamics that shape how technology
-      actually gets built and used at scale.
-    </p>
-    <p>
-      I am based in Copenhagen.
-    </p>
+  <div class="max-w-[680px]">
+    <div class="flex flex-col sm:flex-row gap-8 mb-10">
+      <div class="shrink-0">
+        <img
+          src="/martin-eiler.jpg"
+          alt="Martin Eiler"
+          width="160"
+          height="160"
+          class="w-40 h-40 object-cover object-top"
+          style="image-rendering: auto;"
+        />
+      </div>
+      <div class="space-y-4 text-base font-light text-[#0d0d0d] leading-relaxed">
+        <p>
+          Founder and former CTO based in Copenhagen. For the past decade I have been working
+          at the intersection of technology strategy, platform architecture, and enterprise AI —
+          helping large organisations navigate the shift from traditional IT to modern ways of
+          building and operating software.
+        </p>
+        <p>
+          I am now building something new. The problems I spent years solving for others —
+          how to adopt AI meaningfully, how to build platforms that actually serve their users,
+          how to make technology strategy legible to the rest of the business — remain the
+          problems I find most interesting.
+        </p>
+      </div>
+    </div>
+
+    <div class="space-y-5 text-base font-light text-[#0d0d0d] leading-relaxed">
+      <p>
+        This blog is where I think out loud. The writing covers enterprise AI adoption,
+        platform and infrastructure design, and the organisational dynamics that shape how
+        technology actually gets built and used at scale. I write the way I think — directly,
+        with a preference for the structural over the superficial.
+      </p>
+      <p>
+        All articles on this site are written by Claude as a deliberate experiment in
+        AI-assisted publishing. The ideas, positions, and opinions are mine. The prose is
+        a collaboration.
+      </p>
+    </div>
+
+    <div class="mt-10 pt-8 border-t border-[#e0e0e0]">
+      <a
+        href="https://www.linkedin.com/in/martineiler/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="font-sans font-normal text-sm tracking-[0.05em] uppercase text-[#555555] hover:text-[#cc0000] transition-colors"
+      >
+        LinkedIn
+      </a>
+    </div>
   </div>
 </Base>
