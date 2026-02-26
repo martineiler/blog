@@ -1,43 +1,47 @@
-# Astro Starter Kit: Minimal
+# eiler.dk
 
-```sh
-npm create astro@latest -- --template minimal
+Personal blog by Martin Eiler. Writing on technology, enterprise AI, platform architecture, and the organisational dynamics that shape how software gets built at scale.
+
+Live at [eiler.dk](https://www.eiler.dk)
+
+---
+
+## Stack
+
+| Concern | Tool |
+|---|---|
+| Framework | Astro 5 (static output) |
+| Styling | Tailwind CSS v3 + `@tailwindcss/typography` |
+| Diagrams | `rehype-mermaid` — build-time SVG rendering |
+| Search | Pagefind — fully static, post-build index |
+| Hosting | AWS S3 + Cloudflare |
+| Deploy | GitHub Actions → S3 sync on push to `main` |
+
+## Commands
+
+| Command | Action |
+|---|---|
+| `npm run dev` | Local dev server at `localhost:4321` |
+| `npm run build` | Production build + Pagefind index |
+| `npm run preview` | Preview the `dist/` output locally |
+| `npm run check` | TypeScript type-checking |
+
+## Content
+
+Articles are `.md` files in `src/content/blog/`. Frontmatter schema:
+
+```yaml
+---
+title: "Article Title"
+description: "One or two sentence summary."
+date: 2026-02-25
+tags: ["ai", "platform", "architecture"]
+draft: false
+---
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Deploy
 
-## 🚀 Project Structure
+Push to `main` triggers the GitHub Actions deploy workflow: builds the site, syncs to S3, done. Cloudflare handles CDN and HTTPS.
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Requires GitHub Secrets: `AWS_ROLE_ARN`, `S3_BUCKET`.

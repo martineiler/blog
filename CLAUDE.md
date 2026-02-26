@@ -1,6 +1,6 @@
 # eiler.dk — Personal Blog
 
-Personal blog for eiler.dk. Articles cover tech, enterprise AI, product development with AI, platform and architecture. Hosted as a fully static site on AWS S3 + CloudFront. No database, no server-side runtime.
+Personal blog for eiler.dk. Articles cover tech, enterprise AI, product development with AI, platform and architecture. Hosted as a fully static site on AWS S3 + Cloudflare. No database, no server-side runtime.
 
 All article content is written by Claude.
 
@@ -17,8 +17,8 @@ All article content is written by Claude.
 | Syntax highlighting | Shiki (Astro default) |
 | Search | Pagefind (post-build, fully static) |
 | Build output | Static HTML/CSS/JS (`output: 'static'`) |
-| Hosting | AWS S3 (static website) + CloudFront |
-| Deploy | GitHub Actions → S3 sync + CloudFront invalidation |
+| Hosting | AWS S3 (static website) + Cloudflare (CDN + HTTPS) |
+| Deploy | GitHub Actions → S3 sync on push to `main` |
 
 ---
 
@@ -166,7 +166,7 @@ Mermaid diagrams are written as fenced code blocks in `.md` files and rendered t
 ````md
 ```mermaid
 flowchart LR
-  A[User] --> B[CloudFront] --> C[S3]
+  A[User] --> B[Cloudflare] --> C[S3]
 ```
 ````
 
@@ -240,7 +240,7 @@ Deployment is fully automated via GitHub Actions. No manual deploys.
 
 | Event | Workflow | Action |
 |---|---|---|
-| Push to `main` | `deploy.yml` | Build + deploy to S3 + invalidate CloudFront |
+| Push to `main` | `deploy.yml` | Build + deploy to S3 |
 | Pull request | `build-check.yml` | Build only — validates nothing is broken |
 
 ### `deploy.yml`
@@ -268,19 +268,15 @@ jobs:
           cache: npm
 
       - run: npm ci
+      - run: npx playwright install chromium --with-deps
       - run: npm run build
 
       - uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
-          aws-region: eu-west-1
+          aws-region: eu-north-1
 
       - run: aws s3 sync dist/ s3://${{ secrets.S3_BUCKET }} --delete
-
-      - run: |
-          aws cloudfront create-invalidation \
-            --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
-            --paths "/*"
 ```
 
 ### `build-check.yml`
@@ -316,20 +312,24 @@ GitHub Actions authenticates to AWS via OpenID Connect (OIDC). No long-lived cre
 | Secret | Value |
 |---|---|
 | `AWS_ROLE_ARN` | ARN of the IAM role GitHub Actions assumes |
-| `S3_BUCKET` | S3 bucket name |
-| `CLOUDFRONT_DISTRIBUTION_ID` | CloudFront distribution ID |
+| `S3_BUCKET` | S3 bucket name (`www.eiler.dk`) |
 
 **AWS setup required:**
 1. Create an IAM OIDC identity provider for `token.actions.githubusercontent.com`
 2. Create an IAM role with a trust policy scoped to this repository
-3. Attach a policy granting `s3:PutObject`, `s3:DeleteObject`, `s3:ListBucket`, and `cloudfront:CreateInvalidation`
+3. Attach a policy granting `s3:PutObject`, `s3:DeleteObject`, `s3:ListBucket`
 
 ### S3 bucket configuration
 
-- Static website hosting enabled
-- Index document: `index.html`
-- CloudFront origin points to the S3 website endpoint (not the REST endpoint)
-- CloudFront handles HTTPS and the `eiler.dk` domain
+- Static website hosting enabled, index document: `index.html`
+- Bucket policy: public `s3:GetObject` for all
+- Region: `eu-north-1`
+
+### Cloudflare configuration
+
+- `www.eiler.dk` CNAME → `www.eiler.dk.s3-website.eu-north-1.amazonaws.com`
+- Proxy enabled (orange cloud), SSL mode: Flexible
+- Cloudflare handles HTTPS and CDN — no CloudFront
 
 ---
 
@@ -430,6 +430,17 @@ Rules:
 - `build` — production build + Pagefind index generation
 - `preview` — serves the `dist/` output locally to verify the build
 - `check` — Astro TypeScript type-checking; run before pushing
+
+### Review before pushing
+
+All changes must be reviewed locally before being committed and pushed to GitHub. The workflow is:
+
+1. Make changes
+2. Run `npm run dev` and verify the result in the browser
+3. Get explicit approval from the user
+4. Only then commit and push to GitHub
+
+Never push changes without the user having reviewed and approved them first.
 
 ### `.gitignore`
 
