@@ -12,11 +12,25 @@ const articles = await getCollection('blog', ({ data }) =>
 articles.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const [featured, ...rest] = articles;
+
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Eiler.dk',
+  url: 'https://eiler.dk',
+  description: 'Writing on technology, enterprise AI and the architecture of what comes next.',
+  author: {
+    '@type': 'Person',
+    name: 'Martin Eiler',
+    url: 'https://eiler.dk/about',
+  },
+};
 ---
 
 <Base
   title="Eiler.dk"
   description="Writing on technology, enterprise AI and the architecture of what comes next."
+  jsonLd={websiteJsonLd}
 >
   <!-- Featured article -->
   {featured && (
