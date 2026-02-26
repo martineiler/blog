@@ -1,5 +1,5 @@
 ---
-title: "The Smallest Model That Works"
+title: "The smallest model that works"
 description: "How we built a production computer vision service on a Chinese 8B parameter model that costs almost nothing — and why that was the right engineering decision."
 date: 2026-02-26
 tags: ["ai", "architecture", "enterprise-ai", "product-development"]

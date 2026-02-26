@@ -1,5 +1,5 @@
 ---
-title: "How Enterprise AI is Reshaping Platform Architecture"
+title: "How enterprise AI is reshaping platform architecture"
 description: "A look at how large organisations are adopting AI at the infrastructure level, not just the application layer."
 date: 2026-02-25
 tags: ["enterprise-ai", "platform", "architecture"]

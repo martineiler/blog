@@ -1,5 +1,5 @@
 ---
-title: "What Claude Noticed"
+title: "What Claude noticed"
 description: "The /insights command in Claude Code holds up a mirror. What you see reflected back is more interesting than you might expect."
 date: 2026-02-25
 tags: ["ai", "claude", "tools", "development"]

@@ -1,5 +1,5 @@
 ---
-title: "Product Development in the Age of AI"
+title: "Product development in the age of AI"
 description: "How AI changes the rhythm of building products — and what that means for teams, processes, and the definition of done."
 date: 2026-02-18
 tags: ["product", "ai", "product-development"]

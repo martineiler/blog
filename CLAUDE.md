@@ -373,6 +373,7 @@ See [`docs/fonts.md`](docs/fonts.md) for full setup instructions.
 
 ### Typographic rules
 
+- Headings and article titles use sentence case: only the first word and proper nouns/acronyms are capitalised — never title case (e.g. "The platform paradox", not "The Platform Paradox")
 - Headings are always Sprat Condensed, mixed case — never all-caps
 - Italic (`font-style: italic`) on Sprat is used sparingly and decoratively inside display text via `<em>`
 - UPPERCASE is reserved strictly for UI chrome: navigation, buttons, eyebrow labels — never for headings
@@ -505,6 +506,7 @@ See [`docs/authoring.md`](docs/authoring.md) — to be completed after the first
 
 ## Key Conventions
 
+- Article titles and all headings use sentence case — only the first word and proper nouns/acronyms are capitalised (e.g. "The platform paradox", not "The Platform Paradox")
 - All articles are written by Claude as `.md` files
 - No MDX in v1 — plain Markdown only
 - No client-side JavaScript except Pagefind's search bundle and the search island

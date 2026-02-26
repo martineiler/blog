@@ -1,5 +1,5 @@
 ---
-title: "The Platform Paradox"
+title: "The platform paradox"
 description: "Why platform teams build for everyone and end up serving no one — and how to escape the trap."
 date: 2026-02-10
 tags: ["platform", "architecture", "organisations"]
