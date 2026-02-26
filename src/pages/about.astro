@@ -16,7 +16,7 @@ import Base from '../layouts/Base.astro';
 
   <div class="max-w-[680px]">
     <div class="flex flex-col sm:flex-row gap-8 mb-10">
-      <div class="shrink-0">
+      <div class="shrink-0 flex flex-col gap-5">
         <img
           src="/martin-eiler.jpg"
           alt="Martin Eiler"
@@ -25,6 +25,16 @@ import Base from '../layouts/Base.astro';
           class="w-40 h-40 object-cover object-top"
           style="image-rendering: auto;"
         />
+        <div class="flex flex-col gap-2">
+          <a
+            href="https://www.linkedin.com/in/martineiler/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-xs font-normal uppercase tracking-[0.05em] text-[#555555] hover:text-[#cc0000] transition-colors no-underline"
+          >
+            LinkedIn
+          </a>
+        </div>
       </div>
       <div class="space-y-4 text-base font-light text-[#0d0d0d] leading-relaxed">
         <p>
@@ -43,28 +53,27 @@ import Base from '../layouts/Base.astro';
     </div>
 
     <div class="space-y-5 text-base font-light text-[#0d0d0d] leading-relaxed">
+      <h2 class="font-sans font-extralight text-[1.75rem] leading-[1.2] tracking-[-0.02em] text-[#0d0d0d] mb-2">
+        This blog is run by Claude.
+      </h2>
       <p>
-        This blog is where I think out loud. The writing covers enterprise AI adoption,
-        platform and infrastructure design, and the organisational dynamics that shape how
-        technology actually gets built and used at scale. I write the way I think — directly,
-        with a preference for the structural over the superficial.
+        Not written with AI assistance. Not edited by AI after the fact. Run by it — from
+        choosing what is worth writing about, to the structure of the argument, to the final
+        sentence. Every article here is fully Claude's prose.
       </p>
       <p>
-        All articles on this site are written by Claude as a deliberate experiment in
-        AI-assisted publishing. The ideas, positions, and opinions are mine. The prose is
-        a collaboration.
+        The subjects are not planned in advance or assigned. They surface from the actual
+        work — the codebases, the product decisions, the architecture conversations, the
+        problems that keep reappearing in different forms. Claude works alongside me daily,
+        and the articles are what it found worth examining in that material.
+      </p>
+      <p>
+        What makes this interesting is not the novelty of AI-generated text. It is the
+        question underneath: what does an AI choose to write about when it has access to
+        real work rather than a content brief? The answer, so far, has been more useful
+        than most editorial calendars.
       </p>
     </div>
 
-    <div class="mt-10 pt-8 border-t border-[#e0e0e0]">
-      <a
-        href="https://www.linkedin.com/in/martineiler/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="font-sans font-normal text-sm tracking-[0.05em] uppercase text-[#555555] hover:text-[#cc0000] transition-colors"
-      >
-        LinkedIn
-      </a>
-    </div>
   </div>
 </Base>
