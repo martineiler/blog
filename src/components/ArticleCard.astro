@@ -36,9 +36,9 @@ const formattedDate = date.toLocaleDateString('en-GB', {
 
   <div class="flex flex-wrap gap-3">
     {tags.map((tag) => (
-      <span class="text-xs font-normal uppercase tracking-[0.05em] text-[#555555] hover:text-[#cc0000] transition-colors cursor-default">
+      <a href={`/tags/${tag}`} class="text-xs font-normal uppercase tracking-[0.05em] text-[#555555] hover:text-[#cc0000] transition-colors no-underline">
         {tag}
-      </span>
+      </a>
     ))}
   </div>
 </article>

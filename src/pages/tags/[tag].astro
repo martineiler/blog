@@ -1,0 +1,77 @@
+---
+import { getCollection } from 'astro:content';
+import readingTime from 'reading-time';
+import Base from '../../layouts/Base.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('blog', ({ data }) =>
+    import.meta.env.PROD ? !data.draft : true
+  );
+
+  const tags = [...new Set(articles.flatMap((a) => a.data.tags))];
+
+  return tags.map((tag) => ({
+    params: { tag },
+    props: {
+      tag,
+      articles: articles
+        .filter((a) => a.data.tags.includes(tag))
+        .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()),
+    },
+  }));
+}
+
+const { tag, articles } = Astro.props;
+const canonicalURL = new URL(`/tags/${tag}`, Astro.site).href;
+---
+
+<Base
+  title={tag}
+  description={`Articles tagged ${tag} on Eiler.dk.`}
+  canonicalURL={canonicalURL}
+>
+  <a href="/" class="inline-block text-sm font-light text-[#cc0000] no-underline hover:underline mb-10">
+    ← Back
+  </a>
+
+  <div class="mb-10 border-b border-[#e0e0e0] pb-6">
+    <p class="text-xs font-normal uppercase tracking-[0.05em] text-[#555555] mb-2">Tag</p>
+    <h1 class="font-sans font-extralight text-[3.5rem] leading-[1.1] tracking-[-0.02em] text-[#0d0d0d]">
+      {tag}
+    </h1>
+  </div>
+
+  <div>
+    {Array.from({ length: Math.ceil(articles.length / 2) }, (_, rowIndex) => {
+      const left = articles[rowIndex * 2];
+      const right = articles[rowIndex * 2 + 1];
+      return (
+        <div class="border-b border-[#e0e0e0] grid grid-cols-1 md:grid-cols-2">
+          <div class="md:border-r border-[#e0e0e0] md:pr-8">
+            <ArticleCard
+              title={left.data.title}
+              description={left.data.description}
+              date={left.data.date}
+              tags={left.data.tags}
+              slug={left.slug}
+              readingTime={readingTime(left.body ?? '').text}
+            />
+          </div>
+          <div class="md:pl-8">
+            {right && (
+              <ArticleCard
+                title={right.data.title}
+                description={right.data.description}
+                date={right.data.date}
+                tags={right.data.tags}
+                slug={right.slug}
+                readingTime={readingTime(right.body ?? '').text}
+              />
+            )}
+          </div>
+        </div>
+      );
+    })}
+  </div>
+</Base>
