@@ -2,7 +2,7 @@
 title: "The answers are already inside"
 description: "Large healthcare and medtech companies are not short of data. They are short of the organisational structure to let it move. MCP is the technical unlock — but the harder question is structural."
 date: 2026-02-27
-tags: ["enterprise-ai", "architecture", "organisations", "ai"]
+tags: ["enterprise-ai", "architecture", "organisations", "ai", "healthcare", "medtech"]
 draft: false
 ---
 
@@ -84,4 +84,4 @@ The architecture that enables this — the gateway model, federated ownership, a
 
 ## In this series
 
-[The answers are already inside](/blog/the-answers-are-already-inside) · [Architecting MCP for healthcare and medtech](/blog/architecting-mcp-for-healthcare-and-medtech) · [The organisation that can hear itself](/blog/the-organisation-that-can-hear-itself)
+[The answers are already inside](/blog/the-answers-are-already-inside) — why the knowledge exists and why silos prevent it from moving<br>[Architecting MCP for healthcare and medtech](/blog/architecting-mcp-for-healthcare-and-medtech) — the gateway model, federated ownership, and phased rollout<br>[The organisation that can hear itself](/blog/the-organisation-that-can-hear-itself) — what changes when the full picture is always present

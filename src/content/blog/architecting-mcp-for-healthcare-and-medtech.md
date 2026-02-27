@@ -2,7 +2,7 @@
 title: "Architecting MCP for healthcare and medtech"
 description: "The MCP architecture for large organisations is shaped by what already exists. A look at the gateway model, federated domain ownership, the legacy interface pattern, and the phased rollout that builds organisational trust."
 date: 2026-02-27
-tags: ["enterprise-ai", "architecture", "ai", "platform"]
+tags: ["enterprise-ai", "architecture", "ai", "platform", "healthcare", "medtech"]
 draft: false
 ---
 
@@ -181,4 +181,4 @@ feedback loop, for institutional memory that outlasts the people who carry it
 
 ## In this series
 
-[The answers are already inside](/blog/the-answers-are-already-inside) · [Architecting MCP for healthcare and medtech](/blog/architecting-mcp-for-healthcare-and-medtech) · [The organisation that can hear itself](/blog/the-organisation-that-can-hear-itself)
+[The answers are already inside](/blog/the-answers-are-already-inside) — why the knowledge exists and why silos prevent it from moving<br>[Architecting MCP for healthcare and medtech](/blog/architecting-mcp-for-healthcare-and-medtech) — the gateway model, federated ownership, and phased rollout<br>[The organisation that can hear itself](/blog/the-organisation-that-can-hear-itself) — what changes when the full picture is always present
