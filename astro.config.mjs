@@ -33,7 +33,7 @@ import remarkSmartypants from 'remark-smartypants';
 import remarkUnwrapImages from 'remark-unwrap-images';
 
 export default defineConfig({
-  site: 'https://eiler.dk',
+  site: 'https://www.eiler.dk',
   integrations: [
     tailwind(),
     sitemap({
