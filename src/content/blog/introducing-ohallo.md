@@ -3,7 +3,7 @@ title: "oHallo, and the discipline of modelling nothing"
 description: "Most AI tools for customer operations quietly become a second system of record. We built oHallo to model nothing — to dispatch to your own systems and enforce your policies in deterministic code. Why the boundary is the product."
 date: 2026-06-07
 tags: ["ai", "enterprise-ai", "architecture", "platform"]
-draft: true
+draft: false
 ---
 
 When you set out to build AI for customer operations, the product wants to take an obvious shape. A customer asks where their order is, or whether they can still return something, or what a replacement part would cost. To answer, the software needs to know what an order is, what your return policy says, how your pricing works. So you model it. You build an order object, a returns workflow, a pricing rule engine, and you import the customer's data to feed them. Within a year you are running a second system of record alongside the customer's ERP, and the two of them have started, quietly, to disagree about reality.
