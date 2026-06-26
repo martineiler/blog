@@ -1,6 +1,6 @@
 ---
-title: "America already lost the AI race. It just hasn't noticed."
-description: "Washington is treating AI as a weapon to be controlled. Beijing is treating it as infrastructure to be spread. In a market, infrastructure wins, and the events of 2026 have already settled which."
+title: "America is losing the AI race. They just haven't realised it yet."
+description: "Washington is treating AI as a weapon to be controlled. Beijing is treating it as infrastructure to be spread. The world runs on what it can depend on, not on what is most powerful, and 2026 has already shown which strategy wins."
 date: 2026-06-26
 tags: ["ai", "geopolitics", "strategy", "enterprise-ai"]
 draft: false
@@ -10,7 +10,7 @@ In June, the United States government ordered Anthropic, America's most valuable
 
 Almost everyone read the episode as a blunder, an own-goal, or one more reason not to trust Washington. I think that reading is comfortable, and I think it is wrong. The ban was not a mistake. It was a worldview doing exactly what it was built to do, and in the process it exposed that the worldview is false.
 
-Here is the worldview, stated plainly. The United States believes a frontier AI model is a weapon. China believes it is infrastructure. In a market, infrastructure wins, and a weapon you forbid people to buy is just an expense.
+Here is the worldview, stated plainly. The United States believes a frontier AI model is a weapon. China believes it is infrastructure. The world runs on the technology it can depend on, not the most powerful one, and a weapon you forbid people to buy is just an expense.
 
 Everything that has happened since February is downstream of that single category error.
 
